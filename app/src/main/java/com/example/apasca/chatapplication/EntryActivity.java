@@ -8,19 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.apasca.chatapplication.constants.ApiUrls;
 import com.example.apasca.chatapplication.utils.VolleyCallback;
 import com.example.apasca.chatapplication.utils.VolleyRequest;
-import com.example.apasca.chatapplication.utils.VolleySingleton;
-import com.fasterxml.jackson.core.JsonParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +39,7 @@ public class EntryActivity extends AppCompatActivity {
                     HashMap<String, String> params = new HashMap<String, String>();
                     params.put( "username", username.getText().toString() );
                     params.put( "password", password.getText().toString() );
-                    vr.getResponse( Request.Method.POST, ApiUrls.ApiPostLoginUrl, new JSONObject( params ),
+                    vr.getResponse( Request.Method.POST, ApiUrls.PostLoginUrl, new JSONObject( params ),
                             new VolleyCallback() {
                                 @Override
                                 public void onSuccessResponse(String result) {
@@ -55,7 +47,7 @@ public class EntryActivity extends AppCompatActivity {
                                         JSONObject response = new JSONObject( result );
                                         Log.d( "RESPONSE in string", result );
                                         // do your work with response object
-                                        intent.putExtra( "USERNAME", username.getText().toString().trim() );
+                                        intent.putExtra( "USER", result );
                                         startActivity( intent );
 
                                     } catch (JSONException e) {
