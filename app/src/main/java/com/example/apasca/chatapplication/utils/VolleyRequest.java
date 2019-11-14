@@ -2,6 +2,7 @@ package com.example.apasca.chatapplication.utils;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -39,7 +40,6 @@ public class VolleyRequest extends Application {
             @Override
             public void onErrorResponse(VolleyError e) {
                 e.printStackTrace();
-                Log.d("Error:" , e.getMessage());
                 Toast.makeText(context, e + "error", Toast.LENGTH_LONG).show();
             }
         })
